@@ -41,6 +41,39 @@
 
       <![endif]-->
 
+      <style type="text/css">
+        .cubito {
+            width: 6rem;
+            background: red;
+            display: inline-block;
+            margin-left: 1rem;
+            margin-top: 1rem;
+            padding: 0.2rem;
+            cursor: pointer;
+        }
+        .cubito h3{
+            font-size: 14px !important;
+            text-align: center !important;
+            height: 36px;
+            overflow: hidden;
+        }
+        .cubito h5{
+            font-size: 12px !important;
+            text-align: center !important;
+        }
+        #trigger-overlay{
+          display: none !important;
+        }
+        .icon-container {
+            display: inline-block;
+            float: left;
+            margin-top: 5px;
+            background: #ffffff;
+            color: #263b40;
+            overflow: auto !important;
+        }
+      </style>
+
 
   </head>
   <body class="homepage">
@@ -102,17 +135,41 @@
 
   				<section id="about" class="cd-section about-section">
   					<div class="cd-block">
-  						<div class="cd-half-block left-side"></div>
+  						<div class="cd-half-block left-side">
+              
+                <div class="grid" id="pics">
+                  
+                </div>
+
+              </div>
   						<div class="cd-half-block right-side">
-  							<h2 class="section-title">About Us</h2>
-  							<p class="section-description">We are full time developer. Developing is our hobby and passion. We always love build something new to all.</p>
-  							<div class="about-details">
-  								<div class="item">
-  									<h4 class="item-title">Strategy</h4>
-  									<p class="item-details">We all follow some tips for our work. We take time for doing anything better. We believe in professionalism. We always provide professional work. Unique design is one of the main keys to our work. </p>
-  								</div><!-- /.item -->
-  								<a class="btn animsition-link" href="about.html">Explore More</a>
-  							</div><!-- /.about-details -->
+                
+                <div>
+                  <select id="country" onChange="populateReg(this.options[this.selectedIndex].value)">
+                      <option>[ País ]</option>
+                  </select>
+                  <select id="reg" onChange="populatePol(null,this.options[this.selectedIndex].value)">
+                      <option>[ Región ]</option>
+                  </select> 
+                  <select id="pp" onChange="filterPP(this.options[this.selectedIndex].value)">
+                      <option>[ Partido ]</option>
+                  </select>
+                   
+
+                </div>
+
+  							<!-- <h2 class="section-title">About Us</h2>
+  							<p class="section-description">We are full time developer. Developing is our hobby and passion. We always love build something new to all.</p> -->
+  							<div class="team-details">
+
+                  <div id="congres" class="member" style="display: none">
+                    <span class="member-avatar"><img src="" alt="Convoca"></span>
+                    <h4 class="member-name"></h4>
+                    <span class="member-position"></span>
+                  </div><!-- /.member -->
+                  
+                </div><!-- /.about-details -->
+                <div class="team-details" id="contLaw"></div>
   						</div>
   					</div><!-- /#about -->
   				</section> <!-- .cd-section -->
@@ -145,168 +202,9 @@
   					</div><!-- /.cd-block -->
   				</section><!-- /#service -->
 
-  				<section id="team" class="cd-section team-section">
-  					<div class="cd-block">
-  						<div class="cd-half-block left-side"></div>
-  						<div class="cd-half-block right-side">
-  							<h2 class="section-title">Team</h2>
-  							<p class="section-description">We respect our work. We never neglect our work. We all have honor of all. We love fun.</p>
-  							<div class="team-details">
-  								<div class="member">
-  									<span class="member-avatar"><img src="images/member/1.jpg" alt="Member Avatar"></span>
-  									<h4 class="member-name">Anthony Doe</h4>
-  									<span class="member-position">Lead Developer</span>
-  								</div><!-- /.member -->
-  								<div class="member">
-  									<span class="member-avatar"><img src="images/member/2.jpg" alt="Member Avatar"></span>
-  									<h4 class="member-name">Marshall Doe</h4>
-  									<span class="member-position">Web Designer</span>
-  								</div><!-- /.member -->
-  							</div><!-- /.about-details -->
-  						</div>
-  					</div><!-- /#team -->
-  				</section> <!-- .cd-section -->
+  				
 
-
-  				<section id="portfolio" class="cd-section portfolio-section">
-  					<div class="cd-block">
-  						<div class="cd-half-block left-side"></div>
-  						<div class="cd-half-block right-side">
-  							<h2 class="section-title">portfolio</h2>
-  							<p class="section-description">Check out our latest portfolio from this page. You can check out our client info also. </p>
-  							<div class="portfolio-details">
-
-  								<figure class="item col-md-6">
-  									<img src="images/portfolio/1.jpg" alt="Portfolio Image">
-  									<figcaption>
-  										<h4 class="item-title">Project Title</h4>
-  										<span class="member-position">WordPress</span>
-  									</figcaption>
-  								</figure><!-- /.item -->
-
-  								<figure class="item col-md-6">
-  									<img src="images/portfolio/2.jpg" alt="Portfolio Image">
-  									<figcaption>
-  										<h4 class="item-title">Project Title</h4>
-  										<span class="member-position">Joomla</span>
-  									</figcaption>
-  								</figure><!-- /.item -->
-
-  								<a class="btn animsition-link" href="portfolio.html">View Portfolio</a>
-
-  							</div><!-- /.about-details -->
-  						</div>
-  					</div><!-- /#portfolio -->
-  				</section> <!-- .cd-section -->
-
-  				<section id="blog" class="cd-section blog-section">
-  					<div class="cd-block">
-  						<div class="cd-half-block left-side"></div>
-  						<div class="cd-half-block right-side">
-  							<h2 class="section-title">Blog</h2>
-  							<p class="section-description">Check out our latest service and latest update from our blog.  </p>
-  							<div class="blog-details">
-  								<article class="post type-post">
-  									<div class="post-meta">
-  										<div class="entry-meta">
-  											<div class="entry-date">
-  												<time datetime="2015-01-14"><span>01</span> Jan</time>
-  											</div>
-  										</div><!-- /.entry-meta -->
-  									</div><!-- /.post-meta -->
-  									<div class="post-content">
-  										<h2 class="entry-title"><a href="blog-single.html">Why MAMA is perfect best portfolio Template?</a></h2>
-  										<p class="entry-text">MAMA is a creative HTML5 Template for all. You can use this as a portfolio site. You can set your own business also with this HTML5 Template. </p>
-  									</div><!-- /.post-content -->
-  								</article><!-- /.post -->
-
-  								<article class="post type-post">
-  									<div class="post-meta">
-  										<div class="entry-meta">
-  											<div class="entry-date">
-  												<time datetime="2015-01-14"><span>01</span> Jan</time>
-  											</div>
-  										</div><!-- /.entry-meta -->
-  									</div><!-- /.post-meta -->
-  									<div class="post-content">
-  										<h2 class="entry-title"><a href="blog-single.html">Creative Idea increase MAMA Quality</a></h2>
-  										<p class="entry-text">MAMA HTML5 Template is stunning Designed. Extreme flexibility to customization. Best choice for all creative person.</p>
-  									</div><!-- /.post-content -->
-  								</article><!-- /.post -->
-  							</div><!-- /.about-details -->
-  						</div>
-  					</div><!-- /#blog -->
-  				</section> <!-- .cd-section -->
-
-
-  				<section id="contact" class="cd-section contact-section">
-  					<div class="cd-block">
-  						<div class="cd-half-block left-side">
-  							<div id="google-map" class="google-map">
-  								<div class="map-container">
-  									<div id="googleMaps" class="google-map-container"></div>
-  								</div><!-- /.map-container -->
-  							</div><!-- /#google-map -->
-  						</div>
-
-  						<div class="cd-half-block right-side">
-  							<h2 class="section-title">Contact</h2>
-  							<p class="section-description">If you face any problem with MAMA, Please contact Us. We will support you free. </p>
-  							<div class="contact-details">
-  								<div id="contact-form" class="contact-form">
-  									<form action="#" method="post" id="contactform" class="contactform">
-  										<input id="author" class="" name="author" type="text" placeholder="Name*" value="" required>
-  										<input id="email" class=" pull-right" name="email" type="email" placeholder="Email*" value="" required>
-  										<input id="subject" class=" pull-right" name="subject" type="text" placeholder="Subject*" value="" required>
-  										<textarea id="message" class="" name="message" placeholder="Message" rows="3" required></textarea>
-  										<button name="submit" class="submit-btn" type="submit" id="submit"><span class="ti-shift-right"></span>Send Now</button>
-  									</form><!-- /#contactform -->
-  								</div><!-- /#leave-contact -->
-  							</div><!-- /.contact-details -->
-
-  							<div class="address-details">
-  								<div class="item">
-  									<div class="contact-icon">
-  										<span class="ti-direction-alt"></span>
-  									</div><!-- /.contact-icon -->
-  									<address>
-  										<p class="street-address">121 King Street Melbourne VIC 3000 Austra+98lia</p>
-  									</address>
-  								</div>
-  								<div class="item">
-  									<div class="contact-icon">
-  										<span class="ti-mobile"></span>
-  									</div><!-- /.contact-icon -->
-  									<div class="mobile">
-  										<span class="mobile-no">+91 9749 976</span>
-  									</div><!-- /.mobile -->
-  								</div>
-  								<div class="item">
-  									<ul class="social-list">
-  										<li><a class="facebook" href="#"><i class="ti-facebook"></i></a></li>
-  										<li><a class="twitter" href="#"><i class="ti-twitter"></i></a></li>
-  										<li><a class="linkedin" href="#"><i class="ti-linkedin"></i></a></li>
-  										<li><a class="dribbble" href="#"><i class="ti-dribbble"></i></a></li>
-  									</ul><!-- /.social-list -->			
-  								</div>
-  							</div><!-- /.address-details -->
-  							
-  							<footer class="contact-bottom">
-  								<div class="copy-right">
-  									&copy; <a href="#">Mama</a> 2015 - All Reserves. Developed by <a href="#">Jewel Theme</a>
-  								</div>
-  								<div class="page-link">
-  									<ul class="pagination">
-  										<a href="#home-section">Home</a>
-  										<a href="#about">About</a>
-  										<a href="#blog">Blog</a>
-  									</ul><!-- /.pagination -->
-  								</div><!-- /.page-link -->
-  							</footer><!-- /.contact-bottom -->
-
-  						</div>
-  					</div>
-  				</section> <!-- .cd-section -->
+  				
   			</div><!-- /main -->
   		</div><!-- wrapper -->
   	</div><!-- /container -->
@@ -326,7 +224,7 @@
   	<script src="assets/js/jquery-2.1.3.min.js"></script>
 
   	<!-- Google Maps Script -->
-  	<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+  	<!-- <script src="http://maps.google.com/maps/api/js?sensor=true"></script> -->
 
   	<!-- Gmap3.js For Static Maps -->
   	<script src="assets/js/gmap3.js"></script>
@@ -337,6 +235,8 @@
 
   	<script src="assets/js/main.js"></script>
 
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script> -->
+
 
   	<script type="text/javascript">
 
@@ -345,6 +245,15 @@
       // Spoof the browser into thinking it is Retina
       // comment the next line out to make sure it works without retina
       window.devicePixelRatio = 2;
+
+      var itemsC = [];
+      var itemsL = [];
+      var country = [];
+
+      var filterCongr = [];
+      var filterPart = [];
+      var filterReg = [];
+      var filterLaw = [];
 
       $(document).ready(function() {
 
@@ -365,14 +274,199 @@
 		      	//$('html, body').animate({scrollTop:target_top}, 100);
 		      	return false;
 		      });
+
+
+          /***********GIACOMO SECTION***************/
+
+          //--------------------------------------GET CONG------->
+          $.getJSON( "data/lider.json", function( data ) {
+            $.each( data, function( key, val ) {
+              itemsC.push( val );
+              if(country.indexOf(val.country)<0){ country.push( val.country ); }
+              if(val.country=='Perú'){ if(filterPart.indexOf(val.pp)<0){ filterPart.push( val.pp ); } filterCongr.push(val); }
+            });
+            populateCoun('Perú');
+            populateReg('Perú');
+            populatePol(null, null);
+            populatePic(filterCongr);
+          });
+
+          //--------------------------------------GET LAWS------->
+          $.getJSON( "data/leyes.json", function( data ) {
+            $.each( data, function( key, val ) {
+              itemsL.push( val );
+            });
+          });
+
       });
+
+      //--------------------------------------POPULATE COUNTRY------->
+      var populateCoun = function(_c){
+        var tempItem = '';
+        for (var i=0;i<country.length;i++){
+           var _s = '';if(country[i]=='Perú'){ _s='selected'; }
+           tempItem += '<option '+_s+' value="'+ country[i] + '">' + country[i] + '</option>';
+        }
+        $('#country').append(tempItem);
+      }
+
+      //--------------------------------------POPULATE REG------->
+      var populateReg = function(_c){
+        var tempItem = '<option value="null">[ Todos ]</option>';
+        //if(_c=='Perú'){ $('#dep').show(500); }else{ $('#dep').hide(500); }
+        filterCongr = [];
+        for (var i=0;i<itemsC.length;i++){
+          if(itemsC[i].country==_c){
+            filterCongr.push(itemsC[i]);
+            if(tempItem.search(itemsC[i].reg)<0){
+                tempItem += '<option value="'+ itemsC[i].reg + '">' + itemsC[i].reg + '</option>';
+            }
+          }
+        }
+        $('#reg').html(tempItem);
+
+        populatePol(_c, null);
+        populatePic(filterCongr);
+      }
+
+      //--------------------------------------POPULATE P.POLITICS------->
+      var populatePol = function(_c, _r){
+        var tempItem = '<option value="null">[ Todos ]</option>';
+        if(_c==null && _r==null){
+          for (var i=0;i<filterPart.length;i++){
+             tempItem += '<option value="'+ filterPart[i] + '">' + filterPart[i] + '</option>';
+          }
+        }
+        if(_c!=null && _r==null){
+          filterCongr = [];
+          for (var i=0;i<itemsC.length;i++){
+            if(itemsC[i].country==_c){
+              filterCongr.push(itemsC[i]);
+              if(tempItem.search(itemsC[i].pp)<0){
+                  tempItem += '<option value="'+ itemsC[i].pp + '">' + itemsC[i].pp + '</option>';
+              }
+            }
+          }
+        }
+        if(_r=='null'){
+          filterCongr = [];
+          _c = $('#country').val();
+          for (var i=0;i<itemsC.length;i++){
+            if(itemsC[i].country==_c){
+              filterCongr.push(itemsC[i]);
+              if(tempItem.search(itemsC[i].pp)<0){
+                  tempItem += '<option value="'+ itemsC[i].pp + '">' + itemsC[i].pp + '</option>';
+              }
+            }
+          }
+        }
+        if(_c==null && _r!=null){
+          filterCongr = [];
+          _c = $('#country').val();
+          for (var i=0;i<itemsC.length;i++){
+            if(itemsC[i].country==_c && itemsC[i].reg==_r){
+              filterCongr.push(itemsC[i]);
+              if(tempItem.search(itemsC[i].pp)<0){
+                  if(itemsC[i].reg==_r){
+                    if(tempItem.search(itemsC[i].pp)<0){
+                        tempItem += '<option value="'+ itemsC[i].pp + '">' + itemsC[i].pp + '</option>';
+                    }
+                  }
+              }
+            }
+          }
+        }
+        $('#pp').html(tempItem);
+        populatePic(filterCongr);
+      }
+
+
+      //--------------------------------------FILTER FOR P.POLITICS------->
+      var filterPP = function(_pp){
+        var _reg = $('#reg').val();
+        filterCongr = [];
+        var _c = $('#country').val();
+
+        if(_reg=='null' && _pp=='null'){
+          for (var i=0;i<itemsC.length;i++){
+            filterCongr.push(itemsC[i]);
+          }
+        }
+        if(_reg=='null' && _pp!='null'){
+          for (var i=0;i<itemsC.length;i++){
+
+            if(itemsC[i].pp==_pp && itemsC[i].country==_c){
+              filterCongr.push(itemsC[i]);
+            }
+          }
+        }
+        if(_reg!='null' && _pp!='null'){
+          for (var i=0;i<itemsC.length;i++){
+            if(itemsC[i].pp==_pp && itemsC[i].country==_c && itemsC[i].reg==_reg){
+              filterCongr.push(itemsC[i]);
+            }
+          }
+        }
+        populatePic(filterCongr);
+      }
+
+      //--------------------------------------POPULATE PICTURES------->
+      var populatePic = function(people){
+          var tempItem = '';
+          var pic = "";
+          for (var i=0;i<people.length;i++){
+            if(people[i].pic==""){ pic="https://www.crohns.net/miva/mainimages/profile_default_woman.jpg" }else{ pic=people[i].pic; }
+            tempItem += '<div onclick="showInfo(this)" class="cubito"><img src="'+pic+'"/><h3>'+people[i].nom+'</h3><h5>'+people[i].tit+'</h5></div>';
+          }
+          $('#pics').html(tempItem);
+      }
+
+      //--------------------------------------SHOW DETAILS------->
+      var showInfo = function(e){
+
+        var img = $(e).find('img').attr('src');
+        var nom = $(e).find('h3').text();
+        var tit = $(e).find('h5').text();
+
+        $("#congres span img").attr('src', img);
+        $("#congres h4").html(nom);
+        $("#congres span.member-position").html(tit);
+
+        filterLaw = [];
+        var _nom = nom.split(" ")[2];
+        var _nom2 = nom.split(" ")[0];
+        for(var i=0;i<itemsL.length;i++){
+          if(itemsL[i].autor.indexOf(_nom)>-1 && itemsL[i].autor.indexOf(_nom2)>-1){
+            filterLaw.push(itemsL[i]);
+          }
+        }
+        populateLaws(filterLaw);
+        $("#congres").show();
+      }
+
+      var populateLaws = function(arrLaw){
+        var tempItem = '';
+        for (var i=0;i<arrLaw.length;i++){
+          tempItem += '<a href="'+arrLaw[i].url+'" target="_blank"><div class="item"><div class="icon-container"> <span class="item-icon ti-link"></span>'+
+                    '</div> <h4 class="item-title">'+arrLaw[i].tit+'</h4> </div> </a>';
+        }
+        $('#contLaw').html(tempItem);
+      }
+      
+
+
+      //console.log(country);
+      //console.log(filterPart);
+      //console.log(filterCongr);
+
+      /***********END GIACOMO SECTION***************/
 
 
       function isMobile() { 
       	return ('ontouchstart' in document.documentElement);
       }
 
-      function init_gmap() {
+      /*function init_gmap() {
       	if ( typeof google == 'undefined' ) return;
       	var options = {
       		center: [-37.817331, 144.955652],
@@ -399,9 +493,9 @@
       			options: { icon: 'images/mapicon.png' }
       		}
       	});
-      }
+      }*/
 
-      init_gmap();
+      //init_gmap();
 
 
 //       (function($) { 
@@ -433,11 +527,13 @@
 // });  
 // })(jQuery);
 
+
+
+
 </script>
 
 
 </body>
 
-<!-- Mirrored from demos.jeweltheme.com/mama/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 05 Mar 2017 17:33:51 GMT -->
 </html>
 
